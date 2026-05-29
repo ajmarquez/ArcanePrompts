@@ -1,0 +1,61 @@
+name: ArcanePrompts
+options:
+  bundleIdPrefix: com.ajmarquez
+  deploymentTarget:
+    iOS: "26.0"
+    macOS: "26.0"
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+    CURRENT_PROJECT_VERSION: 1
+    MARKETING_VERSION: 1.0
+    ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS: YES
+targets:
+  ArcanePromptsIOS:
+    type: application
+    platform: iOS
+    deploymentTarget: "26.0"
+    sources:
+      - path: ArcanePrompts/Shared
+      - path: ArcanePrompts/iOS
+      - path: ArcanePrompts/Resources/Assets.xcassets
+        buildPhase: resources
+    settings:
+      base:
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        PRODUCT_BUNDLE_IDENTIFIER: com.ajmarquez.ArcanePrompts
+        PRODUCT_NAME: ArcanePrompts
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Arcane Prompts
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+    scheme:
+      gatherCoverageData: false
+      testTargets: []
+  ArcanePromptsMac:
+    type: application
+    platform: macOS
+    deploymentTarget: "26.0"
+    sources:
+      - path: ArcanePrompts/Shared
+      - path: ArcanePrompts/macOS
+      - path: ArcanePrompts/Resources/Assets.xcassets
+        buildPhase: resources
+    settings:
+      base:
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        PRODUCT_BUNDLE_IDENTIFIER: com.ajmarquez.ArcanePrompts.mac
+        PRODUCT_NAME: ArcanePrompts
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Arcane Prompts
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.entertainment
+    scheme:
+      gatherCoverageData: false
+      testTargets: []

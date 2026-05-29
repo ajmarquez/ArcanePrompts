@@ -1,0 +1,515 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		27943AA72206D1395B9A1149 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E154D86F9AA8ABFCCE5AC9B /* Assets.xcassets */; };
+		37EAF6C0A20B203D4929195A /* TarotCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8089BE8389513BAA987625CC /* TarotCard.swift */; };
+		3ACE27879C24C71F99B4CE97 /* SettingsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFFFAB406CB0EB29918B07 /* SettingsPanel.swift */; };
+		47ACF0DC4DD062234A03360F /* CardArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E052ADCA749FFE6390DAF8D /* CardArtworkView.swift */; };
+		6B0D3581B52A6F62B9C00AD8 /* ArcanePromptsIOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077FCAC741125C9DA12E5096 /* ArcanePromptsIOSApp.swift */; };
+		6DB64692B255D6697165BD70 /* CardArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E052ADCA749FFE6390DAF8D /* CardArtworkView.swift */; };
+		7A28A0C51E020FBE3F79DF55 /* TarotPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9776B8406A6C815D0EC8FF60 /* TarotPromptView.swift */; };
+		93F2FB94CCDDB17B6C6900D1 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1580EE0BB1C2D1DF3155CCA /* SplashView.swift */; };
+		951D63A8B889B2E15FE43A94 /* SettingsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFFFAB406CB0EB29918B07 /* SettingsPanel.swift */; };
+		955D59E975A8C946BE2881E3 /* DeviceShakeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFDF3C6632E5F46AE60A10F /* DeviceShakeModifier.swift */; };
+		99279FC4A38440CD852C7766 /* TarotDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF23735DCCD60032BEB60A5 /* TarotDeck.swift */; };
+		9C93C03F9EE02A6676497989 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A871203E96463FF6A300C /* AppTheme.swift */; };
+		9E811B3E67C051D3D7322162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E154D86F9AA8ABFCCE5AC9B /* Assets.xcassets */; };
+		ADC4F3A4784022D680DEF95C /* TarotDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF23735DCCD60032BEB60A5 /* TarotDeck.swift */; };
+		BCD6C02EAB29E1B6F740EB25 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A871203E96463FF6A300C /* AppTheme.swift */; };
+		C1BD85EC36A4011FBEB8854B /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1580EE0BB1C2D1DF3155CCA /* SplashView.swift */; };
+		C2ACC831B801ADC57722A17B /* TarotPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9776B8406A6C815D0EC8FF60 /* TarotPromptView.swift */; };
+		D9E7E357625D9004669C4C4F /* TarotCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8089BE8389513BAA987625CC /* TarotCard.swift */; };
+		E00F6D1F31D6B362336A448B /* ArcanePromptsMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78018E8577B49025A61E5A6B /* ArcanePromptsMacApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		077FCAC741125C9DA12E5096 /* ArcanePromptsIOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcanePromptsIOSApp.swift; sourceTree = "<group>"; };
+		5E154D86F9AA8ABFCCE5AC9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		69158DA4DC9671A206DBBDCE /* ArcanePrompts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArcanePrompts.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E052ADCA749FFE6390DAF8D /* CardArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardArtworkView.swift; sourceTree = "<group>"; };
+		78018E8577B49025A61E5A6B /* ArcanePromptsMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcanePromptsMacApp.swift; sourceTree = "<group>"; };
+		7DFDF3C6632E5F46AE60A10F /* DeviceShakeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceShakeModifier.swift; sourceTree = "<group>"; };
+		8089BE8389513BAA987625CC /* TarotCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarotCard.swift; sourceTree = "<group>"; };
+		8DEFFFAB406CB0EB29918B07 /* SettingsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPanel.swift; sourceTree = "<group>"; };
+		9776B8406A6C815D0EC8FF60 /* TarotPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarotPromptView.swift; sourceTree = "<group>"; };
+		BC4DFA598C03926B86A333E0 /* ArcanePrompts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArcanePrompts.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCF23735DCCD60032BEB60A5 /* TarotDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarotDeck.swift; sourceTree = "<group>"; };
+		F1580EE0BB1C2D1DF3155CCA /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		FF8A871203E96463FF6A300C /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		28BCC476549C185DBBB395E7 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				639C0F785921DD33882BEDD2 /* Models */,
+				4ECE0CD4A7ECA3737E91B9BE /* Theme */,
+				B9C5C245A2FB57F097F5CF51 /* Views */,
+			);
+			name = Shared;
+			path = ArcanePrompts/Shared;
+			sourceTree = "<group>";
+		};
+		2D2D359F8DAB2D25C3D3E930 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				077FCAC741125C9DA12E5096 /* ArcanePromptsIOSApp.swift */,
+				7DFDF3C6632E5F46AE60A10F /* DeviceShakeModifier.swift */,
+			);
+			name = iOS;
+			path = ArcanePrompts/iOS;
+			sourceTree = "<group>";
+		};
+		4ECE0CD4A7ECA3737E91B9BE /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				FF8A871203E96463FF6A300C /* AppTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		639C0F785921DD33882BEDD2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8089BE8389513BAA987625CC /* TarotCard.swift */,
+				DCF23735DCCD60032BEB60A5 /* TarotDeck.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		89D488CCA0CBB4A56DA7D972 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5E154D86F9AA8ABFCCE5AC9B /* Assets.xcassets */,
+			);
+			name = Resources;
+			path = ArcanePrompts/Resources;
+			sourceTree = "<group>";
+		};
+		B9C5C245A2FB57F097F5CF51 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6E052ADCA749FFE6390DAF8D /* CardArtworkView.swift */,
+				8DEFFFAB406CB0EB29918B07 /* SettingsPanel.swift */,
+				F1580EE0BB1C2D1DF3155CCA /* SplashView.swift */,
+				9776B8406A6C815D0EC8FF60 /* TarotPromptView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E5C13A8CBE913ED80533C415 = {
+			isa = PBXGroup;
+			children = (
+				2D2D359F8DAB2D25C3D3E930 /* iOS */,
+				EB5CAAEAC4726F10DC371EA9 /* macOS */,
+				89D488CCA0CBB4A56DA7D972 /* Resources */,
+				28BCC476549C185DBBB395E7 /* Shared */,
+				F3A7637301B19D3BDA42F9AB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EB5CAAEAC4726F10DC371EA9 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				78018E8577B49025A61E5A6B /* ArcanePromptsMacApp.swift */,
+			);
+			name = macOS;
+			path = ArcanePrompts/macOS;
+			sourceTree = "<group>";
+		};
+		F3A7637301B19D3BDA42F9AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				69158DA4DC9671A206DBBDCE /* ArcanePrompts.app */,
+				BC4DFA598C03926B86A333E0 /* ArcanePrompts.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3A8C1A03DB6E53C42165ECE7 /* ArcanePromptsIOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52183DA8AC02F9B9DD65803E /* Build configuration list for PBXNativeTarget "ArcanePromptsIOS" */;
+			buildPhases = (
+				0116D23EBA1E0428CF84B4B8 /* Sources */,
+				AA873AC61EC4EB5C93B74B48 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ArcanePromptsIOS;
+			packageProductDependencies = (
+			);
+			productName = ArcanePromptsIOS;
+			productReference = 69158DA4DC9671A206DBBDCE /* ArcanePrompts.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B072102D77293BB8A817256F /* ArcanePromptsMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC031636BA175F3783ABFDCE /* Build configuration list for PBXNativeTarget "ArcanePromptsMac" */;
+			buildPhases = (
+				384B07E65D68C02C60936F72 /* Sources */,
+				9C1B86B968A899B83DA7594C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ArcanePromptsMac;
+			packageProductDependencies = (
+			);
+			productName = ArcanePromptsMac;
+			productReference = BC4DFA598C03926B86A333E0 /* ArcanePrompts.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B164CE74503500C32C36E7CB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+			};
+			buildConfigurationList = 221F39598C64EB11E68B9A30 /* Build configuration list for PBXProject "ArcanePrompts" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = E5C13A8CBE913ED80533C415;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = F3A7637301B19D3BDA42F9AB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3A8C1A03DB6E53C42165ECE7 /* ArcanePromptsIOS */,
+				B072102D77293BB8A817256F /* ArcanePromptsMac */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9C1B86B968A899B83DA7594C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27943AA72206D1395B9A1149 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA873AC61EC4EB5C93B74B48 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E811B3E67C051D3D7322162 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0116D23EBA1E0428CF84B4B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C93C03F9EE02A6676497989 /* AppTheme.swift in Sources */,
+				6B0D3581B52A6F62B9C00AD8 /* ArcanePromptsIOSApp.swift in Sources */,
+				47ACF0DC4DD062234A03360F /* CardArtworkView.swift in Sources */,
+				955D59E975A8C946BE2881E3 /* DeviceShakeModifier.swift in Sources */,
+				951D63A8B889B2E15FE43A94 /* SettingsPanel.swift in Sources */,
+				C1BD85EC36A4011FBEB8854B /* SplashView.swift in Sources */,
+				D9E7E357625D9004669C4C4F /* TarotCard.swift in Sources */,
+				99279FC4A38440CD852C7766 /* TarotDeck.swift in Sources */,
+				C2ACC831B801ADC57722A17B /* TarotPromptView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		384B07E65D68C02C60936F72 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD6C02EAB29E1B6F740EB25 /* AppTheme.swift in Sources */,
+				E00F6D1F31D6B362336A448B /* ArcanePromptsMacApp.swift in Sources */,
+				6DB64692B255D6697165BD70 /* CardArtworkView.swift in Sources */,
+				3ACE27879C24C71F99B4CE97 /* SettingsPanel.swift in Sources */,
+				93F2FB94CCDDB17B6C6900D1 /* SplashView.swift in Sources */,
+				37EAF6C0A20B203D4929195A /* TarotCard.swift in Sources */,
+				ADC4F3A4784022D680DEF95C /* TarotDeck.swift in Sources */,
+				7A28A0C51E020FBE3F79DF55 /* TarotPromptView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D15F1551259BBC82AB3B02F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		3AB51464A06808CE732A38BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		5220C82F3762A9D4D7EBDE85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = A98K3QG549;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Arcane Prompts";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ajmarquez.ArcanePrompts;
+				PRODUCT_NAME = ArcanePrompts;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BF2735166564910BF2939E51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A98K3QG549;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Arcane Prompts";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ajmarquez.ArcanePrompts.mac;
+				PRODUCT_NAME = ArcanePrompts;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C2EE0C959BCB53E590CB6F2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = A98K3QG549;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Arcane Prompts";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ajmarquez.ArcanePrompts;
+				PRODUCT_NAME = ArcanePrompts;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DA567C6E1C58FD14629B5431 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A98K3QG549;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Arcane Prompts";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ajmarquez.ArcanePrompts.mac;
+				PRODUCT_NAME = ArcanePrompts;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		221F39598C64EB11E68B9A30 /* Build configuration list for PBXProject "ArcanePrompts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AB51464A06808CE732A38BC /* Debug */,
+				1D15F1551259BBC82AB3B02F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		52183DA8AC02F9B9DD65803E /* Build configuration list for PBXNativeTarget "ArcanePromptsIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2EE0C959BCB53E590CB6F2A /* Debug */,
+				5220C82F3762A9D4D7EBDE85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FC031636BA175F3783ABFDCE /* Build configuration list for PBXNativeTarget "ArcanePromptsMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF2735166564910BF2939E51 /* Debug */,
+				DA567C6E1C58FD14629B5431 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B164CE74503500C32C36E7CB /* Project object */;
+}
