@@ -21,7 +21,6 @@
 		9C93C03F9EE02A6676497989 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A871203E96463FF6A300C /* AppTheme.swift */; };
 		9E811B3E67C051D3D7322162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E154D86F9AA8ABFCCE5AC9B /* Assets.xcassets */; };
 		ADC4F3A4784022D680DEF95C /* TarotDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF23735DCCD60032BEB60A5 /* TarotDeck.swift */; };
-		B2631621104D5AEFA352AFBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 449E265DDEDE4E7A50D32242 /* LaunchScreen.storyboard */; };
 		BCD6C02EAB29E1B6F740EB25 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A871203E96463FF6A300C /* AppTheme.swift */; };
 		C1BD85EC36A4011FBEB8854B /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1580EE0BB1C2D1DF3155CCA /* SplashView.swift */; };
 		C2ACC831B801ADC57722A17B /* TarotPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9776B8406A6C815D0EC8FF60 /* TarotPromptView.swift */; };
@@ -31,7 +30,6 @@
 
 /* Begin PBXFileReference section */
 		077FCAC741125C9DA12E5096 /* ArcanePromptsIOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcanePromptsIOSApp.swift; sourceTree = "<group>"; };
-		449E265DDEDE4E7A50D32242 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E154D86F9AA8ABFCCE5AC9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69158DA4DC9671A206DBBDCE /* ArcanePromptsIOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ArcanePromptsIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E052ADCA749FFE6390DAF8D /* CardArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardArtworkView.swift; sourceTree = "<group>"; };
@@ -63,7 +61,6 @@
 			children = (
 				077FCAC741125C9DA12E5096 /* ArcanePromptsIOSApp.swift */,
 				7DFDF3C6632E5F46AE60A10F /* DeviceShakeModifier.swift */,
-				449E265DDEDE4E7A50D32242 /* LaunchScreen.storyboard */,
 			);
 			name = iOS;
 			path = ArcanePrompts/iOS;
@@ -183,6 +180,14 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					3A8C1A03DB6E53C42165ECE7 = {
+						DevelopmentTeam = A98K3QG549;
+						ProvisioningStyle = Automatic;
+					};
+					B072102D77293BB8A817256F = {
+						DevelopmentTeam = A98K3QG549;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 221F39598C64EB11E68B9A30 /* Build configuration list for PBXProject "ArcanePrompts" */;
@@ -219,7 +224,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E811B3E67C051D3D7322162 /* Assets.xcassets in Resources */,
-				B2631621104D5AEFA352AFBE /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +299,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -354,7 +358,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -390,10 +394,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A98K3QG549;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Arcane Prompts";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = (
 					UIInterfaceOrientationPortrait,
 					UIInterfaceOrientationPortraitUpsideDown,
@@ -420,7 +426,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A98K3QG549;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Arcane Prompts";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
@@ -440,10 +448,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A98K3QG549;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Arcane Prompts";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = (
 					UIInterfaceOrientationPortrait,
 					UIInterfaceOrientationPortraitUpsideDown,
@@ -470,7 +480,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A98K3QG549;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Arcane Prompts";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
