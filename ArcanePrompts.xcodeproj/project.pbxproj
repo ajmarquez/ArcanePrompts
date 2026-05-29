@@ -31,14 +31,14 @@
 /* Begin PBXFileReference section */
 		077FCAC741125C9DA12E5096 /* ArcanePromptsIOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcanePromptsIOSApp.swift; sourceTree = "<group>"; };
 		5E154D86F9AA8ABFCCE5AC9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		69158DA4DC9671A206DBBDCE /* ArcanePromptsIOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ArcanePromptsIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		69158DA4DC9671A206DBBDCE /* ArcanePrompts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArcanePrompts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E052ADCA749FFE6390DAF8D /* CardArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardArtworkView.swift; sourceTree = "<group>"; };
 		78018E8577B49025A61E5A6B /* ArcanePromptsMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcanePromptsMacApp.swift; sourceTree = "<group>"; };
 		7DFDF3C6632E5F46AE60A10F /* DeviceShakeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceShakeModifier.swift; sourceTree = "<group>"; };
 		8089BE8389513BAA987625CC /* TarotCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarotCard.swift; sourceTree = "<group>"; };
 		8DEFFFAB406CB0EB29918B07 /* SettingsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPanel.swift; sourceTree = "<group>"; };
 		9776B8406A6C815D0EC8FF60 /* TarotPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarotPromptView.swift; sourceTree = "<group>"; };
-		BC4DFA598C03926B86A333E0 /* ArcanePromptsMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArcanePromptsMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC4DFA598C03926B86A333E0 /* ArcanePromptsMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = ArcanePromptsMac.app; path = ArcanePrompts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF23735DCCD60032BEB60A5 /* TarotDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarotDeck.swift; sourceTree = "<group>"; };
 		F1580EE0BB1C2D1DF3155CCA /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		FF8A871203E96463FF6A300C /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		F3A7637301B19D3BDA42F9AB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				69158DA4DC9671A206DBBDCE /* ArcanePromptsIOS.app */,
+				69158DA4DC9671A206DBBDCE /* ArcanePrompts.app */,
 				BC4DFA598C03926B86A333E0 /* ArcanePromptsMac.app */,
 			);
 			name = Products;
@@ -150,7 +150,7 @@
 			packageProductDependencies = (
 			);
 			productName = ArcanePromptsIOS;
-			productReference = 69158DA4DC9671A206DBBDCE /* ArcanePromptsIOS.app */;
+			productReference = 69158DA4DC9671A206DBBDCE /* ArcanePrompts.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B072102D77293BB8A817256F /* ArcanePromptsMac */ = {
@@ -398,18 +398,11 @@
 				DEVELOPMENT_TEAM = A98K3QG549;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Arcane Prompts";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = (
-					UIInterfaceOrientationPortrait,
-					UIInterfaceOrientationPortraitUpsideDown,
-					UIInterfaceOrientationLandscapeLeft,
-					UIInterfaceOrientationLandscapeRight,
-				);
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = (
-					UIInterfaceOrientationPortrait,
-					UIInterfaceOrientationPortraitUpsideDown,
-				);
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -452,18 +445,11 @@
 				DEVELOPMENT_TEAM = A98K3QG549;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Arcane Prompts";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = (
-					UIInterfaceOrientationPortrait,
-					UIInterfaceOrientationPortraitUpsideDown,
-					UIInterfaceOrientationLandscapeLeft,
-					UIInterfaceOrientationLandscapeRight,
-				);
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = (
-					UIInterfaceOrientationPortrait,
-					UIInterfaceOrientationPortraitUpsideDown,
-				);
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
