@@ -1,0 +1,13 @@
+{
+  "images" : [
+    {
+      "filename" : "Marseille-08-Strength.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

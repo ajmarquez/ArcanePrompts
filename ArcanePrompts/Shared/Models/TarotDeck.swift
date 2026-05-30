@@ -1,69 +1,117 @@
 import Foundation
 
 enum TarotDeck {
-    static let majorArcana: [TarotCard] = [
-        .init(name: "The Fool", detail: "Major Arcana", assetName: "00-TheFool", isMajorArcana: true),
-        .init(name: "The Magician", detail: "Major Arcana", assetName: "01-TheMagician", isMajorArcana: true),
-        .init(name: "The High Priestess", detail: "Major Arcana", assetName: "02-TheHighPriestess", isMajorArcana: true),
-        .init(name: "The Empress", detail: "Major Arcana", assetName: "03-TheEmpress", isMajorArcana: true),
-        .init(name: "The Emperor", detail: "Major Arcana", assetName: "04-TheEmperor", isMajorArcana: true),
-        .init(name: "The Hierophant", detail: "Major Arcana", assetName: "05-TheHierophant", isMajorArcana: true),
-        .init(name: "The Lovers", detail: "Major Arcana", assetName: "06-TheLovers", isMajorArcana: true),
-        .init(name: "The Chariot", detail: "Major Arcana", assetName: "07-TheChariot", isMajorArcana: true),
-        .init(name: "Strength", detail: "Major Arcana", assetName: "08-Strength", isMajorArcana: true),
-        .init(name: "The Hermit", detail: "Major Arcana", assetName: "09-TheHermit", isMajorArcana: true),
-        .init(name: "Wheel of Fortune", detail: "Major Arcana", assetName: "10-WheelOfFortune", isMajorArcana: true),
-        .init(name: "Justice", detail: "Major Arcana", assetName: "11-Justice", isMajorArcana: true),
-        .init(name: "The Hanged Man", detail: "Major Arcana", assetName: "12-TheHangedMan", isMajorArcana: true),
-        .init(name: "Death", detail: "Major Arcana", assetName: "13-Death", isMajorArcana: true),
-        .init(name: "Temperance", detail: "Major Arcana", assetName: "14-Temperance", isMajorArcana: true),
-        .init(name: "The Devil", detail: "Major Arcana", assetName: "15-TheDevil", isMajorArcana: true),
-        .init(name: "The Tower", detail: "Major Arcana", assetName: "16-TheTower", isMajorArcana: true),
-        .init(name: "The Star", detail: "Major Arcana", assetName: "17-TheStar", isMajorArcana: true),
-        .init(name: "The Moon", detail: "Major Arcana", assetName: "18-TheMoon", isMajorArcana: true),
-        .init(name: "The Sun", detail: "Major Arcana", assetName: "19-TheSun", isMajorArcana: true),
-        .init(name: "Judgement", detail: "Major Arcana", assetName: "20-Judgement", isMajorArcana: true),
-        .init(name: "The World", detail: "Major Arcana", assetName: "21-TheWorld", isMajorArcana: true)
-    ]
-
-    static let fullDeck: [TarotCard] = majorArcana + minorArcana
-
-    static func randomCard(for mode: DeckMode) -> TarotCard {
-        let deck = cards(for: mode)
-        return deck.randomElement() ?? majorArcana[0]
+    private struct MajorCardDefinition {
+        let cardID: String
+        let name: String
+        let marseilleSourceID: String
     }
 
-    static func cards(for mode: DeckMode) -> [TarotCard] {
+    private static let majorDefinitions: [MajorCardDefinition] = [
+        .init(cardID: "00-TheFool", name: "The Fool", marseilleSourceID: "a22"),
+        .init(cardID: "01-TheMagician", name: "The Magician", marseilleSourceID: "a01"),
+        .init(cardID: "02-TheHighPriestess", name: "The High Priestess", marseilleSourceID: "a02"),
+        .init(cardID: "03-TheEmpress", name: "The Empress", marseilleSourceID: "a03"),
+        .init(cardID: "04-TheEmperor", name: "The Emperor", marseilleSourceID: "a04"),
+        .init(cardID: "05-TheHierophant", name: "The Hierophant", marseilleSourceID: "a05"),
+        .init(cardID: "06-TheLovers", name: "The Lovers", marseilleSourceID: "a06"),
+        .init(cardID: "07-TheChariot", name: "The Chariot", marseilleSourceID: "a07"),
+        .init(cardID: "08-Strength", name: "Strength", marseilleSourceID: "a11"),
+        .init(cardID: "09-TheHermit", name: "The Hermit", marseilleSourceID: "a09"),
+        .init(cardID: "10-WheelOfFortune", name: "Wheel of Fortune", marseilleSourceID: "a10"),
+        .init(cardID: "11-Justice", name: "Justice", marseilleSourceID: "a08"),
+        .init(cardID: "12-TheHangedMan", name: "The Hanged Man", marseilleSourceID: "a12"),
+        .init(cardID: "13-Death", name: "Death", marseilleSourceID: "a13"),
+        .init(cardID: "14-Temperance", name: "Temperance", marseilleSourceID: "a14"),
+        .init(cardID: "15-TheDevil", name: "The Devil", marseilleSourceID: "a15"),
+        .init(cardID: "16-TheTower", name: "The Tower", marseilleSourceID: "a16"),
+        .init(cardID: "17-TheStar", name: "The Star", marseilleSourceID: "a17"),
+        .init(cardID: "18-TheMoon", name: "The Moon", marseilleSourceID: "a18"),
+        .init(cardID: "19-TheSun", name: "The Sun", marseilleSourceID: "a19"),
+        .init(cardID: "20-Judgement", name: "Judgement", marseilleSourceID: "a20"),
+        .init(cardID: "21-TheWorld", name: "The World", marseilleSourceID: "a21")
+    ]
+
+    private static let suitDefinitions = [
+        ("Cups", "Cups"),
+        ("Pentacles", "Pentacles"),
+        ("Swords", "Swords"),
+        ("Wands", "Wands")
+    ]
+
+    private static let ranks = [
+        "Ace", "Two", "Three", "Four", "Five", "Six", "Seven",
+        "Eight", "Nine", "Ten", "Page", "Knight", "Queen", "King"
+    ]
+
+    static func randomCard(for mode: DeckMode, artwork: TarotArtwork) -> TarotCard {
+        let deck = cards(for: mode, artwork: artwork)
+        return deck.randomElement() ?? majorArcana(for: artwork)[0]
+    }
+
+    static func cards(for mode: DeckMode, artwork: TarotArtwork) -> [TarotCard] {
         switch mode {
         case .majorArcana:
-            return majorArcana
+            return majorArcana(for: artwork)
         case .fullDeck:
-            return fullDeck
+            return fullDeck(for: artwork)
         }
     }
 
-    private static let minorArcana: [TarotCard] = {
-        let suits = [
-            ("Cups", "Cups"),
-            ("Pentacles", "Pentacles"),
-            ("Swords", "Swords"),
-            ("Wands", "Wands")
-        ]
-        let ranks = [
-            "Ace", "Two", "Three", "Four", "Five", "Six", "Seven",
-            "Eight", "Nine", "Ten", "Page", "Knight", "Queen", "King"
-        ]
+    static func card(withID cardID: String, artwork: TarotArtwork) -> TarotCard? {
+        fullDeck(for: artwork).first(where: { $0.cardID == cardID })
+    }
 
-        return suits.flatMap { suit in
+    static func majorArcana(for artwork: TarotArtwork) -> [TarotCard] {
+        majorDefinitions.map { definition in
+            TarotCard(
+                cardID: definition.cardID,
+                name: definition.name,
+                detail: majorDetail(for: artwork),
+                assetName: assetName(for: definition.cardID, artwork: artwork),
+                isMajorArcana: true
+            )
+        }
+    }
+
+    static func fullDeck(for artwork: TarotArtwork) -> [TarotCard] {
+        majorArcana(for: artwork) + minorArcana(for: artwork)
+    }
+
+    private static func minorArcana(for artwork: TarotArtwork) -> [TarotCard] {
+        suitDefinitions.flatMap { suit in
             ranks.enumerated().map { index, rank in
-                let assetName = "\(suit.0)\(String(format: "%02d", index + 1))"
+                let cardID = "\(suit.0)\(String(format: "%02d", index + 1))"
                 return TarotCard(
+                    cardID: cardID,
                     name: "\(rank) of \(suit.1)",
-                    detail: "Minor Arcana",
-                    assetName: assetName,
+                    detail: minorDetail(for: artwork),
+                    assetName: assetName(for: cardID, artwork: artwork),
                     isMajorArcana: false
                 )
             }
         }
-    }()
+    }
+
+    private static func assetName(for cardID: String, artwork: TarotArtwork) -> String {
+        artwork.assetPrefix + cardID
+    }
+
+    private static func majorDetail(for artwork: TarotArtwork) -> String {
+        switch artwork {
+        case .riderWaiteSmith:
+            return "Major Arcana"
+        case .marseille:
+            return "Major Arcana · Marseille"
+        }
+    }
+
+    private static func minorDetail(for artwork: TarotArtwork) -> String {
+        switch artwork {
+        case .riderWaiteSmith:
+            return "Minor Arcana"
+        case .marseille:
+            return "Minor Arcana · Marseille"
+        }
+    }
 }

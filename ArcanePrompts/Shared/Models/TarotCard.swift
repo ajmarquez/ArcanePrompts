@@ -25,6 +25,42 @@ enum DeckMode: String, CaseIterable, Identifiable {
     }
 }
 
+enum TarotArtwork: String, CaseIterable, Identifiable {
+    case riderWaiteSmith
+    case marseille
+
+    static let defaultArtwork: TarotArtwork = .riderWaiteSmith
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .riderWaiteSmith:
+            return "Rider-Waite"
+        case .marseille:
+            return "Marseille"
+        }
+    }
+
+    var description: String {
+        switch self {
+        case .riderWaiteSmith:
+            return "Classic Rider-Waite-Smith illustrations."
+        case .marseille:
+            return "CBD Tarot de Marseille woodcut-style artwork."
+        }
+    }
+
+    var assetPrefix: String {
+        switch self {
+        case .riderWaiteSmith:
+            return ""
+        case .marseille:
+            return "Marseille-"
+        }
+    }
+}
+
 enum CardBackDesign: String, CaseIterable, Identifiable {
     case mysticEye
     case mirroredTower
@@ -80,10 +116,11 @@ enum CardBackDesign: String, CaseIterable, Identifiable {
 }
 
 struct TarotCard: Identifiable, Hashable {
+    let cardID: String
     let name: String
     let detail: String
     let assetName: String
     let isMajorArcana: Bool
 
-    var id: String { assetName }
+    var id: String { cardID }
 }

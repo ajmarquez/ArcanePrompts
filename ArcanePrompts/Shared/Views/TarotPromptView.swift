@@ -8,24 +8,39 @@ struct TarotPromptView: View {
         var helperText: String {
             switch self {
             case .shake:
-                return "Shake or double-tap to draw. Swipe up for options. Swipe down to reset."
+                return "Shake or double-tap to draw. Swipe left for tools. Swipe down to reset."
             case .button:
-                return "Double-tap or press Draw to reveal a prompt. Swipe up for options. Swipe down to reset."
+                return "Double-tap or press Draw to reveal a prompt. Swipe left for tools. Swipe down to reset."
             }
         }
+    }
+
+    enum ActiveSheet: String, Identifiable {
+        case settings
+        case info
+
+        var id: String { rawValue }
     }
 
     let interactionStyle: InteractionStyle
 
     @AppStorage("deckMode") private var deckModeRawValue = DeckMode.majorArcana.rawValue
+    @AppStorage("deckArtwork") private var deckArtworkRawValue = TarotArtwork.defaultArtwork.rawValue
     @AppStorage("cardBackDesign") private var cardBackDesignRawValue = CardBackDesign.defaultDesign.rawValue
     @State private var selectedCard: TarotCard?
+    @State private var activeSheet: ActiveSheet?
     @State private var isShowingMenu = false
+    @State private var isShowingToolbar = false
     @State private var showsSplash = true
 
     private var deckMode: DeckMode {
         get { DeckMode(rawValue: deckModeRawValue) ?? .majorArcana }
         nonmutating set { deckModeRawValue = newValue.rawValue }
+    }
+
+    private var deckArtwork: TarotArtwork {
+        get { TarotArtwork(rawValue: deckArtworkRawValue) ?? .defaultArtwork }
+        nonmutating set { deckArtworkRawValue = newValue.rawValue }
     }
 
     private var cardBackDesign: CardBackDesign {
@@ -35,6 +50,29 @@ struct TarotPromptView: View {
 
     private var currentAssetName: String {
         selectedCard?.assetName ?? cardBackDesign.assetName
+    }
+
+    private var deckModeBinding: Binding<DeckMode> {
+        Binding(
+            get: { deckMode },
+            set: { deckMode = $0 }
+        )
+    }
+
+    private var deckArtworkBinding: Binding<TarotArtwork> {
+        Binding(
+            get: { deckArtwork },
+            set: { newArtwork in
+                updateDeckArtwork(newArtwork)
+            }
+        )
+    }
+
+    private var cardBackDesignBinding: Binding<CardBackDesign> {
+        Binding(
+            get: { cardBackDesign },
+            set: { cardBackDesign = $0 }
+        )
     }
 
     var body: some View {
@@ -54,6 +92,9 @@ struct TarotPromptView: View {
                 showsSplash = false
             }
         }
+        .sheet(item: $activeSheet) { sheet in
+            sheetView(for: sheet)
+        }
     }
 
     @ViewBuilder
@@ -71,36 +112,29 @@ struct TarotPromptView: View {
             CardArtworkView(assetName: currentAssetName, presentationMode: .immersive)
                 .ignoresSafeArea()
                 .contentShape(Rectangle())
+                .onTapGesture {
+                    hideToolbar()
+                }
                 .onTapGesture(count: 2, perform: drawCard)
-                .simultaneousGesture(verticalSwipeGesture)
+                .simultaneousGesture(cardSwipeGesture)
+
+            if isShowingToolbar {
+                HStack {
+                    Spacer()
+
+                    CardActionToolbar(
+                        hasSelectedCard: selectedCard != nil,
+                        onSettings: { presentSheet(.settings) },
+                        onInfo: { presentSheet(.info) }
+                    )
+                    .padding(.trailing, 18)
+                    .transition(.move(edge: .trailing).combined(with: .opacity))
+                }
+            }
         }
         .onDeviceShake {
             guard interactionStyle == .shake else { return }
             drawCard()
-        }
-        .sheet(isPresented: $isShowingMenu) {
-            SettingsPanel(
-                deckMode: Binding(
-                    get: { deckMode },
-                    set: { deckMode = $0 }
-                ),
-                cardBackDesign: Binding(
-                    get: { cardBackDesign },
-                    set: { cardBackDesign = $0 }
-                ),
-                selectedCard: selectedCard,
-                interactionLabel: interactionStyle.helperText,
-                onReset: {
-                    resetToCardBack()
-                },
-                onDismiss: {
-                    isShowingMenu = false
-                },
-                presentationStyle: .sheet
-            )
-            .presentationDetents([.height(320), .medium])
-            .presentationDragIndicator(.visible)
-            .presentationCornerRadius(28)
         }
     }
     #endif
@@ -123,7 +157,7 @@ struct TarotPromptView: View {
                     .contentShape(Rectangle())
                     .onTapGesture(count: 2, perform: drawCard)
                     .onTapGesture(perform: toggleMenu)
-                    .simultaneousGesture(verticalSwipeGesture)
+                    .simultaneousGesture(cardSwipeGesture)
 
                 VStack(spacing: 8) {
                     Text(selectedCard?.name ?? "Arcane Prompts")
@@ -158,20 +192,9 @@ struct TarotPromptView: View {
                     Spacer()
 
                     SettingsPanel(
-                        deckMode: Binding(
-                            get: { deckMode },
-                            set: { deckMode = $0 }
-                        ),
-                        cardBackDesign: Binding(
-                            get: { cardBackDesign },
-                            set: { cardBackDesign = $0 }
-                        ),
-                        selectedCard: selectedCard,
-                        interactionLabel: interactionStyle.helperText,
-                        onReset: {
-                            selectedCard = nil
-                            isShowingMenu = false
-                        },
+                        deckMode: deckModeBinding,
+                        deckArtwork: deckArtworkBinding,
+                        cardBackDesign: cardBackDesignBinding,
                         onDismiss: {
                             withAnimation(.spring(response: 0.34, dampingFraction: 0.82)) {
                                 isShowingMenu = false
@@ -186,10 +209,46 @@ struct TarotPromptView: View {
         }
     }
 
+    @ViewBuilder
+    private func sheetView(for sheet: ActiveSheet) -> some View {
+        switch sheet {
+        case .settings:
+            SettingsPanel(
+                deckMode: deckModeBinding,
+                deckArtwork: deckArtworkBinding,
+                cardBackDesign: cardBackDesignBinding,
+                onDismiss: {
+                    activeSheet = nil
+                },
+                presentationStyle: .sheet
+            )
+            .presentationDetents([.height(360), .medium])
+            .presentationDragIndicator(.visible)
+            .presentationCornerRadius(28)
+
+        case .info:
+            if let selectedCard {
+                CardInfoSheet(
+                    card: selectedCard,
+                    onDismiss: {
+                        activeSheet = nil
+                    }
+                )
+                .presentationDetents([.fraction(0.5), .large])
+                .presentationDragIndicator(.visible)
+                .presentationCornerRadius(28)
+            } else {
+                Text("Draw a card to see its meaning.")
+                    .padding()
+            }
+        }
+    }
+
     private func drawCard() {
         withAnimation(.spring(response: 0.36, dampingFraction: 0.8)) {
-            selectedCard = TarotDeck.randomCard(for: deckMode)
+            selectedCard = TarotDeck.randomCard(for: deckMode, artwork: deckArtwork)
             isShowingMenu = false
+            isShowingToolbar = false
         }
     }
 
@@ -203,18 +262,67 @@ struct TarotPromptView: View {
         withAnimation(.spring(response: 0.36, dampingFraction: 0.84)) {
             selectedCard = nil
             isShowingMenu = false
+            isShowingToolbar = false
         }
     }
 
-    private var verticalSwipeGesture: some Gesture {
+    private func updateDeckArtwork(_ artwork: TarotArtwork) {
+        deckArtwork = artwork
+
+        guard let selectedCard else { return }
+
+        self.selectedCard = TarotDeck.card(withID: selectedCard.cardID, artwork: artwork)
+    }
+
+    private func presentSheet(_ sheet: ActiveSheet) {
+        hideToolbar()
+        activeSheet = sheet
+    }
+
+    private func showToolbar() {
+        withAnimation(.spring(response: 0.34, dampingFraction: 0.82)) {
+            isShowingToolbar = true
+        }
+    }
+
+    private func hideToolbar() {
+        withAnimation(.spring(response: 0.28, dampingFraction: 0.88)) {
+            isShowingToolbar = false
+        }
+    }
+
+    private var cardSwipeGesture: some Gesture {
         DragGesture(minimumDistance: 24)
             .onEnded { value in
-                guard abs(value.translation.height) > abs(value.translation.width) else { return }
+                if abs(value.translation.width) > abs(value.translation.height) {
+                    if value.translation.width < -70 {
+                        #if os(iOS)
+                        showToolbar()
+                        #else
+                        withAnimation(.spring(response: 0.34, dampingFraction: 0.82)) {
+                            isShowingMenu = true
+                        }
+                        #endif
+                    } else if value.translation.width > 70 {
+                        hideToolbar()
+                        #if !os(iOS)
+                        withAnimation(.spring(response: 0.34, dampingFraction: 0.82)) {
+                            isShowingMenu = false
+                        }
+                        #endif
+                    }
+                    return
+                }
 
                 if value.translation.height > 90 {
                     resetToCardBack()
                 } else if value.translation.height < -90 {
-                    isShowingMenu = true
+                    hideToolbar()
+                    #if !os(iOS)
+                    withAnimation(.spring(response: 0.34, dampingFraction: 0.82)) {
+                        isShowingMenu = false
+                    }
+                    #endif
                 }
             }
     }

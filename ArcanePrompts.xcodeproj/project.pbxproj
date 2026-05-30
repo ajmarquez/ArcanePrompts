@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		071CF1FE6A7F8888CEA1D4A8 /* TarotMeaningCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC939B919B42359E47702CB /* TarotMeaningCatalog.swift */; };
+		13DC9D3DA166E493BC15ECAA /* CardInfoSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9979C7648AEF4C14FB8DA2 /* CardInfoSheet.swift */; };
 		27943AA72206D1395B9A1149 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E154D86F9AA8ABFCCE5AC9B /* Assets.xcassets */; };
 		37EAF6C0A20B203D4929195A /* TarotCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8089BE8389513BAA987625CC /* TarotCard.swift */; };
 		3ACE27879C24C71F99B4CE97 /* SettingsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFFFAB406CB0EB29918B07 /* SettingsPanel.swift */; };
+		3CDBA040E6FD8CA815FC01F2 /* CardActionToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A06CFF2E969D95F38042C9 /* CardActionToolbar.swift */; };
+		3D5F78B6990F3C29A38777D5 /* CardActionToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A06CFF2E969D95F38042C9 /* CardActionToolbar.swift */; };
 		47ACF0DC4DD062234A03360F /* CardArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E052ADCA749FFE6390DAF8D /* CardArtworkView.swift */; };
 		6B0D3581B52A6F62B9C00AD8 /* ArcanePromptsIOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077FCAC741125C9DA12E5096 /* ArcanePromptsIOSApp.swift */; };
 		6DB64692B255D6697165BD70 /* CardArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E052ADCA749FFE6390DAF8D /* CardArtworkView.swift */; };
@@ -17,9 +21,11 @@
 		93F2FB94CCDDB17B6C6900D1 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1580EE0BB1C2D1DF3155CCA /* SplashView.swift */; };
 		951D63A8B889B2E15FE43A94 /* SettingsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFFFAB406CB0EB29918B07 /* SettingsPanel.swift */; };
 		955D59E975A8C946BE2881E3 /* DeviceShakeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFDF3C6632E5F46AE60A10F /* DeviceShakeModifier.swift */; };
+		97755053C5E7A1BD3E717E3A /* CardInfoSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9979C7648AEF4C14FB8DA2 /* CardInfoSheet.swift */; };
 		99279FC4A38440CD852C7766 /* TarotDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF23735DCCD60032BEB60A5 /* TarotDeck.swift */; };
 		9C93C03F9EE02A6676497989 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A871203E96463FF6A300C /* AppTheme.swift */; };
 		9E811B3E67C051D3D7322162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E154D86F9AA8ABFCCE5AC9B /* Assets.xcassets */; };
+		9E98B3034FA3B1C5B08104C3 /* TarotMeaningCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC939B919B42359E47702CB /* TarotMeaningCatalog.swift */; };
 		ADC4F3A4784022D680DEF95C /* TarotDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF23735DCCD60032BEB60A5 /* TarotDeck.swift */; };
 		BCD6C02EAB29E1B6F740EB25 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8A871203E96463FF6A300C /* AppTheme.swift */; };
 		C1BD85EC36A4011FBEB8854B /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1580EE0BB1C2D1DF3155CCA /* SplashView.swift */; };
@@ -30,10 +36,13 @@
 
 /* Begin PBXFileReference section */
 		077FCAC741125C9DA12E5096 /* ArcanePromptsIOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcanePromptsIOSApp.swift; sourceTree = "<group>"; };
+		0F9979C7648AEF4C14FB8DA2 /* CardInfoSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoSheet.swift; sourceTree = "<group>"; };
+		20A06CFF2E969D95F38042C9 /* CardActionToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardActionToolbar.swift; sourceTree = "<group>"; };
 		5E154D86F9AA8ABFCCE5AC9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69158DA4DC9671A206DBBDCE /* ArcanePromptsIOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ArcanePromptsIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E052ADCA749FFE6390DAF8D /* CardArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardArtworkView.swift; sourceTree = "<group>"; };
 		78018E8577B49025A61E5A6B /* ArcanePromptsMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcanePromptsMacApp.swift; sourceTree = "<group>"; };
+		7AC939B919B42359E47702CB /* TarotMeaningCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarotMeaningCatalog.swift; sourceTree = "<group>"; };
 		7DFDF3C6632E5F46AE60A10F /* DeviceShakeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceShakeModifier.swift; sourceTree = "<group>"; };
 		8089BE8389513BAA987625CC /* TarotCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarotCard.swift; sourceTree = "<group>"; };
 		8DEFFFAB406CB0EB29918B07 /* SettingsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPanel.swift; sourceTree = "<group>"; };
@@ -79,6 +88,7 @@
 			children = (
 				8089BE8389513BAA987625CC /* TarotCard.swift */,
 				DCF23735DCCD60032BEB60A5 /* TarotDeck.swift */,
+				7AC939B919B42359E47702CB /* TarotMeaningCatalog.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -95,7 +105,9 @@
 		B9C5C245A2FB57F097F5CF51 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				20A06CFF2E969D95F38042C9 /* CardActionToolbar.swift */,
 				6E052ADCA749FFE6390DAF8D /* CardArtworkView.swift */,
+				0F9979C7648AEF4C14FB8DA2 /* CardInfoSheet.swift */,
 				8DEFFFAB406CB0EB29918B07 /* SettingsPanel.swift */,
 				F1580EE0BB1C2D1DF3155CCA /* SplashView.swift */,
 				9776B8406A6C815D0EC8FF60 /* TarotPromptView.swift */,
@@ -236,12 +248,15 @@
 			files = (
 				9C93C03F9EE02A6676497989 /* AppTheme.swift in Sources */,
 				6B0D3581B52A6F62B9C00AD8 /* ArcanePromptsIOSApp.swift in Sources */,
+				3D5F78B6990F3C29A38777D5 /* CardActionToolbar.swift in Sources */,
 				47ACF0DC4DD062234A03360F /* CardArtworkView.swift in Sources */,
+				13DC9D3DA166E493BC15ECAA /* CardInfoSheet.swift in Sources */,
 				955D59E975A8C946BE2881E3 /* DeviceShakeModifier.swift in Sources */,
 				951D63A8B889B2E15FE43A94 /* SettingsPanel.swift in Sources */,
 				C1BD85EC36A4011FBEB8854B /* SplashView.swift in Sources */,
 				D9E7E357625D9004669C4C4F /* TarotCard.swift in Sources */,
 				99279FC4A38440CD852C7766 /* TarotDeck.swift in Sources */,
+				071CF1FE6A7F8888CEA1D4A8 /* TarotMeaningCatalog.swift in Sources */,
 				C2ACC831B801ADC57722A17B /* TarotPromptView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,11 +267,14 @@
 			files = (
 				BCD6C02EAB29E1B6F740EB25 /* AppTheme.swift in Sources */,
 				E00F6D1F31D6B362336A448B /* ArcanePromptsMacApp.swift in Sources */,
+				3CDBA040E6FD8CA815FC01F2 /* CardActionToolbar.swift in Sources */,
 				6DB64692B255D6697165BD70 /* CardArtworkView.swift in Sources */,
+				97755053C5E7A1BD3E717E3A /* CardInfoSheet.swift in Sources */,
 				3ACE27879C24C71F99B4CE97 /* SettingsPanel.swift in Sources */,
 				93F2FB94CCDDB17B6C6900D1 /* SplashView.swift in Sources */,
 				37EAF6C0A20B203D4929195A /* TarotCard.swift in Sources */,
 				ADC4F3A4784022D680DEF95C /* TarotDeck.swift in Sources */,
+				9E98B3034FA3B1C5B08104C3 /* TarotMeaningCatalog.swift in Sources */,
 				7A28A0C51E020FBE3F79DF55 /* TarotPromptView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
