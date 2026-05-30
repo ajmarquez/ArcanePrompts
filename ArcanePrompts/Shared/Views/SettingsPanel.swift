@@ -14,10 +14,10 @@ struct SettingsPanel: View {
 
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack(alignment: .leading, spacing: 18) {
+            VStack(alignment: .leading, spacing: 16) {
                 HStack {
                     Text("Settings")
-                        .font(.system(size: 22, weight: .semibold, design: .serif))
+                        .font(.system(size: 19, weight: .semibold, design: .serif))
                         .foregroundStyle(AppTheme.sheetInk)
 
                     Spacer()
@@ -32,7 +32,7 @@ struct SettingsPanel: View {
 
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Card Pool")
-                        .font(.footnote.weight(.semibold))
+                        .font(.caption.weight(.semibold))
                         .foregroundStyle(AppTheme.sheetMuted)
 
                     Picker("Card Pool", selection: $deckMode) {
@@ -43,13 +43,13 @@ struct SettingsPanel: View {
                     .pickerStyle(.segmented)
 
                     Text(deckMode.description)
-                        .font(.footnote)
+                        .font(.caption)
                         .foregroundStyle(AppTheme.sheetMuted)
                 }
 
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Deck Artwork")
-                        .font(.footnote.weight(.semibold))
+                        .font(.caption.weight(.semibold))
                         .foregroundStyle(AppTheme.sheetMuted)
 
                     Picker("Deck Artwork", selection: $deckArtwork) {
@@ -60,20 +60,20 @@ struct SettingsPanel: View {
                     .pickerStyle(.segmented)
 
                     Text(deckArtwork.description)
-                        .font(.footnote)
+                        .font(.caption)
                         .foregroundStyle(AppTheme.sheetMuted)
                 }
 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Card Back")
-                        .font(.footnote.weight(.semibold))
+                        .font(.caption.weight(.semibold))
                         .foregroundStyle(AppTheme.sheetMuted)
 
                     HStack(spacing: 14) {
                         Image(cardBackDesign.assetName)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 66, height: 116)
+                            .frame(width: 56, height: 98)
                             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 12, style: .continuous)
@@ -82,7 +82,7 @@ struct SettingsPanel: View {
 
                         VStack(alignment: .leading, spacing: 6) {
                             Text(cardBackDesign.subtitle)
-                                .font(.headline)
+                                .font(.subheadline.weight(.semibold))
                                 .foregroundStyle(AppTheme.sheetInk)
 
                             Picker("Card Back", selection: $cardBackDesign) {
@@ -93,13 +93,13 @@ struct SettingsPanel: View {
                             .pickerStyle(.menu)
 
                             Text(cardBackDesign.description)
-                                .font(.footnote)
+                                .font(.caption)
                                 .foregroundStyle(AppTheme.sheetMuted)
                         }
                     }
                 }
             }
-            .padding(20)
+            .padding(18)
         }
         .modifier(SettingsPanelContainerModifier(style: presentationStyle))
     }

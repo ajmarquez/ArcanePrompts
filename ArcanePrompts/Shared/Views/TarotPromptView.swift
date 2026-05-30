@@ -252,8 +252,9 @@ struct TarotPromptView: View {
     }
 
     private func drawCard() {
+        selectedCard = TarotDeck.randomCard(for: deckMode, artwork: deckArtwork)
+
         withAnimation(.spring(response: 0.36, dampingFraction: 0.8)) {
-            selectedCard = TarotDeck.randomCard(for: deckMode, artwork: deckArtwork)
             isShowingMenu = false
             isShowingToolbar = false
         }
@@ -266,8 +267,9 @@ struct TarotPromptView: View {
     }
 
     private func resetToCardBack() {
+        selectedCard = nil
+
         withAnimation(.spring(response: 0.36, dampingFraction: 0.84)) {
-            selectedCard = nil
             isShowingMenu = false
             isShowingToolbar = false
         }

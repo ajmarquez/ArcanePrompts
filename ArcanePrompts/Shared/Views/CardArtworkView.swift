@@ -21,6 +21,7 @@ struct CardArtworkView: View {
                         .resizable()
                         .scaledToFit()
                         .rotationEffect(.degrees(isReversed ? 180 : 0))
+                        .animation(nil, value: isReversed)
                         .frame(
                             width: proxy.size.width,
                             height: proxy.size.height
@@ -34,6 +35,7 @@ struct CardArtworkView: View {
                 .resizable()
                 .scaledToFit()
                 .rotationEffect(.degrees(isReversed ? 180 : 0))
+                .animation(nil, value: isReversed)
                 .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
                 .overlay(
                     RoundedRectangle(cornerRadius: 22, style: .continuous)

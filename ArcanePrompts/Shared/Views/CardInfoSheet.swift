@@ -26,24 +26,24 @@ struct CardInfoSheet: View {
         TarotMeaningCatalog.meaning(for: card.cardID)
     }
 
-    private var splitMeaning: (upright: String, reversed: String?)? {
+    private var splitSummary: (upright: String, reversed: String?)? {
         guard let meaning else { return nil }
 
-        let parts = meaning.detail.components(separatedBy: "Reversed:")
-        let upright = parts.first?.trimmingCharacters(in: .whitespacesAndNewlines) ?? meaning.detail
+        let parts = meaning.summary.components(separatedBy: "Reversed:")
+        let upright = parts.first?.trimmingCharacters(in: .whitespacesAndNewlines) ?? meaning.summary
         let reversed = parts.count > 1 ? parts[1].trimmingCharacters(in: .whitespacesAndNewlines) : nil
         return (upright, reversed)
     }
 
     private var summaryText: String {
         guard let meaning else { return "Draw a card to load its meaning." }
-        guard let splitMeaning else { return meaning.summary }
+        guard let splitSummary else { return meaning.summary }
 
-        if card.isReversed, let reversed = splitMeaning.reversed {
+        if card.isReversed, let reversed = splitSummary.reversed {
             return "Reversed: \(condensedSummary(from: reversed))"
         }
 
-        return "Upright: \(condensedSummary(from: splitMeaning.upright))"
+        return "Upright: \(condensedSummary(from: splitSummary.upright))"
     }
 
     private var detailText: String {
@@ -79,23 +79,23 @@ struct CardInfoSheet: View {
 
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack(alignment: .leading, spacing: 18) {
+            VStack(alignment: .leading, spacing: 16) {
                 HStack(alignment: .top, spacing: 12) {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(card.displayName)
-                            .font(.system(size: 26, weight: .semibold, design: .serif))
+                            .font(.system(size: 21, weight: .semibold, design: .serif))
                             .foregroundStyle(AppTheme.sheetInk)
 
                         HStack(spacing: 8) {
                             Text(card.detail)
-                                .font(.subheadline)
+                                .font(.caption)
                                 .foregroundStyle(AppTheme.sheetMuted)
 
                             Text(card.orientationLabel)
-                                .font(.caption.weight(.semibold))
+                                .font(.caption2.weight(.semibold))
                                 .foregroundStyle(AppTheme.midnight)
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 5)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
                                 .background(
                                     Capsule(style: .continuous)
                                         .fill(AppTheme.gold.opacity(0.9))
@@ -107,7 +107,7 @@ struct CardInfoSheet: View {
 
                     Button(action: onDismiss) {
                         Image(systemName: "xmark.circle.fill")
-                            .font(.title3)
+                            .font(.callout)
                             .foregroundStyle(AppTheme.sheetMuted)
                     }
                     .buttonStyle(.plain)
@@ -129,33 +129,33 @@ struct CardInfoSheet: View {
                             Text(detailText)
                         }
                     }
-                    .font(.body)
+                    .font(.subheadline)
                     .foregroundStyle(AppTheme.sheetInk)
                     .textSelection(.enabled)
 
                     VStack(alignment: .leading, spacing: 6) {
                         Text("Source")
-                            .font(.footnote.weight(.semibold))
+                            .font(.caption.weight(.semibold))
                             .foregroundStyle(AppTheme.sheetMuted)
 
                         Text(meaning.sourceTitle)
-                            .font(.footnote)
+                            .font(.caption)
                             .foregroundStyle(AppTheme.sheetMuted)
 
                         if let sourceURL = URL(string: meaning.sourceURL) {
                             Link("Open Sacred Texts source", destination: sourceURL)
-                                .font(.footnote.weight(.semibold))
+                                .font(.caption.weight(.semibold))
                                 .foregroundStyle(AppTheme.sheetInk)
                         }
                     }
                     .padding(.top, 4)
                 } else {
                     Text("Draw a card to load its meaning.")
-                        .font(.body)
+                        .font(.subheadline)
                         .foregroundStyle(AppTheme.sheetMuted)
                 }
             }
-            .padding(20)
+            .padding(18)
         }
     }
 }
