@@ -11,6 +11,7 @@ struct CardArtworkView: View {
 
     #if os(iOS)
     private let immersiveZoomScale: CGFloat = 1.08
+    private let immersiveVerticalBleed: CGFloat = 2
     #endif
 
     var body: some View {
@@ -29,6 +30,7 @@ struct CardArtworkView: View {
                         )
                         #if os(iOS)
                         .scaleEffect(immersiveZoomScale)
+                        .padding(.vertical, -immersiveVerticalBleed)
                         #endif
                 }
                 .frame(width: proxy.size.width, height: proxy.size.height)
