@@ -1,11 +1,17 @@
 import SwiftUI
 
 struct SettingsPanel: View {
+    enum PresentationStyle {
+        case floating
+        case sheet
+    }
+
     @Binding var deckMode: DeckMode
     let selectedCard: TarotCard?
     let interactionLabel: String
     let onReset: () -> Void
     let onDismiss: () -> Void
+    var presentationStyle: PresentationStyle = .floating
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
@@ -67,15 +73,29 @@ struct SettingsPanel: View {
             Spacer(minLength: 0)
         }
         .padding(20)
-        .frame(width: 280)
-        .background(
-            RoundedRectangle(cornerRadius: 28, style: .continuous)
-                .fill(.ultraThinMaterial.opacity(0.95))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 28, style: .continuous)
-                        .stroke(AppTheme.parchment.opacity(0.18), lineWidth: 1)
-                )
-        )
+        .modifier(SettingsPanelContainerModifier(style: presentationStyle))
     }
 }
 
+private struct SettingsPanelContainerModifier: ViewModifier {
+    let style: SettingsPanel.PresentationStyle
+
+    func body(content: Content) -> some View {
+        switch style {
+        case .floating:
+            content
+                .frame(width: 280)
+                .background(
+                    RoundedRectangle(cornerRadius: 28, style: .continuous)
+                        .fill(.ultraThinMaterial.opacity(0.95))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 28, style: .continuous)
+                                .stroke(AppTheme.parchment.opacity(0.18), lineWidth: 1)
+                        )
+                )
+        case .sheet:
+            content
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+}

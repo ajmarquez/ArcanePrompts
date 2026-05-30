@@ -8,9 +8,9 @@ struct TarotPromptView: View {
         var helperText: String {
             switch self {
             case .shake:
-                return "Shake your device to draw a new writing prompt."
+                return "Shake or double-tap to draw. Swipe up for options. Swipe down to reset."
             case .button:
-                return "Draw a card to reveal a new writing prompt."
+                return "Double-tap or press Draw to reveal a prompt. Swipe up for options. Swipe down to reset."
             }
         }
     }
@@ -61,53 +61,36 @@ struct TarotPromptView: View {
 
     #if os(iOS)
     private var iosReadingView: some View {
-        ZStack(alignment: .trailing) {
+        ZStack {
             CardArtworkView(assetName: currentAssetName, presentationMode: .immersive)
                 .ignoresSafeArea()
                 .contentShape(Rectangle())
-                .onTapGesture {
-                    withAnimation(.spring(response: 0.34, dampingFraction: 0.82)) {
-                        isShowingMenu.toggle()
-                    }
-                }
-
-            if isShowingMenu {
-                ZStack(alignment: .trailing) {
-                    Color.black.opacity(0.22)
-                        .ignoresSafeArea()
-                        .onTapGesture {
-                            withAnimation(.spring(response: 0.34, dampingFraction: 0.82)) {
-                                isShowingMenu = false
-                            }
-                        }
-
-                    SettingsPanel(
-                        deckMode: Binding(
-                            get: { deckMode },
-                            set: { deckMode = $0 }
-                        ),
-                        selectedCard: selectedCard,
-                        interactionLabel: interactionStyle.helperText,
-                        onReset: {
-                            selectedCard = nil
-                            isShowingMenu = false
-                        },
-                        onDismiss: {
-                            withAnimation(.spring(response: 0.34, dampingFraction: 0.82)) {
-                                isShowingMenu = false
-                            }
-                        }
-                    )
-                    .padding(.trailing, 12)
-                    .padding(.vertical, 24)
-                    .transition(.move(edge: .trailing).combined(with: .opacity))
-                }
-                .ignoresSafeArea()
-            }
+                .onTapGesture(count: 2, perform: drawCard)
+                .simultaneousGesture(verticalSwipeGesture)
         }
         .onDeviceShake {
             guard interactionStyle == .shake else { return }
             drawCard()
+        }
+        .sheet(isPresented: $isShowingMenu) {
+            SettingsPanel(
+                deckMode: Binding(
+                    get: { deckMode },
+                    set: { deckMode = $0 }
+                ),
+                selectedCard: selectedCard,
+                interactionLabel: interactionStyle.helperText,
+                onReset: {
+                    resetToCardBack()
+                },
+                onDismiss: {
+                    isShowingMenu = false
+                },
+                presentationStyle: .sheet
+            )
+            .presentationDetents([.height(320), .medium])
+            .presentationDragIndicator(.visible)
+            .presentationCornerRadius(28)
         }
     }
     #endif
@@ -128,11 +111,9 @@ struct TarotPromptView: View {
                     .padding(.horizontal, 20)
                     .padding(.vertical, 8)
                     .contentShape(Rectangle())
-                    .onTapGesture {
-                        withAnimation(.spring(response: 0.34, dampingFraction: 0.82)) {
-                            isShowingMenu.toggle()
-                        }
-                    }
+                    .onTapGesture(count: 2, perform: drawCard)
+                    .onTapGesture(perform: toggleMenu)
+                    .simultaneousGesture(verticalSwipeGesture)
 
                 VStack(spacing: 8) {
                     Text(selectedCard?.name ?? "Arcane Prompts")
@@ -196,5 +177,31 @@ struct TarotPromptView: View {
             selectedCard = TarotDeck.randomCard(for: deckMode)
             isShowingMenu = false
         }
+    }
+
+    private func toggleMenu() {
+        withAnimation(.spring(response: 0.34, dampingFraction: 0.82)) {
+            isShowingMenu.toggle()
+        }
+    }
+
+    private func resetToCardBack() {
+        withAnimation(.spring(response: 0.36, dampingFraction: 0.84)) {
+            selectedCard = nil
+            isShowingMenu = false
+        }
+    }
+
+    private var verticalSwipeGesture: some Gesture {
+        DragGesture(minimumDistance: 24)
+            .onEnded { value in
+                guard abs(value.translation.height) > abs(value.translation.width) else { return }
+
+                if value.translation.height > 90 {
+                    resetToCardBack()
+                } else if value.translation.height < -90 {
+                    isShowingMenu = true
+                }
+            }
     }
 }
