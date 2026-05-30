@@ -17,7 +17,6 @@ struct TarotPromptView: View {
 
     enum ActiveSheet: String, Identifiable {
         case settings
-        case info
 
         var id: String { rawValue }
     }
@@ -29,6 +28,7 @@ struct TarotPromptView: View {
     @AppStorage("cardBackDesign") private var cardBackDesignRawValue = CardBackDesign.defaultDesign.rawValue
     @State private var selectedCard: TarotCard?
     @State private var activeSheet: ActiveSheet?
+    @State private var isShowingInfoModal = false
     @State private var isShowingMenu = false
     @State private var isShowingToolbar = false
     @State private var showsSplash = true
@@ -95,6 +95,16 @@ struct TarotPromptView: View {
         .sheet(item: $activeSheet) { sheet in
             sheetView(for: sheet)
         }
+        .fullScreenCover(isPresented: $isShowingInfoModal) {
+            if let selectedCard {
+                CardInfoModal(
+                    card: selectedCard,
+                    onDismiss: {
+                        isShowingInfoModal = false
+                    }
+                )
+            }
+        }
     }
 
     @ViewBuilder
@@ -129,7 +139,7 @@ struct TarotPromptView: View {
                     CardActionToolbar(
                         hasSelectedCard: selectedCard != nil,
                         onSettings: { presentSheet(.settings) },
-                        onInfo: { presentSheet(.info) }
+                        onInfo: presentInfoModal
                     )
                     .padding(.trailing, 18)
                     .transition(.move(edge: .trailing).combined(with: .opacity))
@@ -232,22 +242,6 @@ struct TarotPromptView: View {
             .presentationDetents([.height(360), .medium])
             .presentationDragIndicator(.visible)
             .presentationCornerRadius(28)
-
-        case .info:
-            if let selectedCard {
-                CardInfoSheet(
-                    card: selectedCard,
-                    onDismiss: {
-                        activeSheet = nil
-                    }
-                )
-                .presentationDetents([.fraction(0.5), .large])
-                .presentationDragIndicator(.visible)
-                .presentationCornerRadius(28)
-            } else {
-                Text("Draw a card to see its meaning.")
-                    .padding()
-            }
         }
     }
 
@@ -290,6 +284,12 @@ struct TarotPromptView: View {
     private func presentSheet(_ sheet: ActiveSheet) {
         hideToolbar()
         activeSheet = sheet
+    }
+
+    private func presentInfoModal() {
+        guard selectedCard != nil else { return }
+        hideToolbar()
+        isShowingInfoModal = true
     }
 
     private func showToolbar() {

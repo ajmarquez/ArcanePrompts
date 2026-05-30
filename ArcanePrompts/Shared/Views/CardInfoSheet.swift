@@ -1,5 +1,28 @@
 import SwiftUI
 
+struct CardInfoModal: View {
+    let card: TarotCard
+    let onDismiss: () -> Void
+
+    var body: some View {
+        NavigationStack {
+            CardInfoSheet(card: card, onDismiss: onDismiss)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                .background(
+                    LinearGradient(
+                        colors: [
+                            AppTheme.parchment.opacity(0.96),
+                            Color.white.opacity(0.92)
+                        ],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                    .ignoresSafeArea()
+                )
+        }
+    }
+}
+
 struct CardInfoSheet: View {
     enum Section: String, CaseIterable, Identifiable {
         case summary
