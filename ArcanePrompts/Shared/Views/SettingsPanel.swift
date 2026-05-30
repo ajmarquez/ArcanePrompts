@@ -7,6 +7,7 @@ struct SettingsPanel: View {
     }
 
     @Binding var deckMode: DeckMode
+    @Binding var cardBackDesign: CardBackDesign
     let selectedCard: TarotCard?
     let interactionLabel: String
     let onReset: () -> Void
@@ -47,6 +48,41 @@ struct SettingsPanel: View {
                     .foregroundStyle(AppTheme.parchment.opacity(0.72))
             }
 
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Card Back")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(AppTheme.gold)
+
+                HStack(spacing: 14) {
+                    Image(cardBackDesign.assetName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 66, height: 116)
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                .stroke(AppTheme.gold.opacity(0.28), lineWidth: 1)
+                        )
+
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(cardBackDesign.subtitle)
+                            .font(.headline)
+                            .foregroundStyle(AppTheme.parchment)
+
+                        Picker("Card Back", selection: $cardBackDesign) {
+                            ForEach(CardBackDesign.allCases) { design in
+                                Text("\(design.title) · \(design.subtitle)").tag(design)
+                            }
+                        }
+                        .pickerStyle(.menu)
+
+                        Text(cardBackDesign.description)
+                            .font(.footnote)
+                            .foregroundStyle(AppTheme.parchment.opacity(0.72))
+                    }
+                }
+            }
+
             VStack(alignment: .leading, spacing: 8) {
                 Text("Current Card")
                     .font(.footnote.weight(.semibold))
@@ -56,7 +92,7 @@ struct SettingsPanel: View {
                     .font(.headline)
                     .foregroundStyle(AppTheme.parchment)
 
-                Text(selectedCard?.detail ?? "Waiting for the next draw.")
+                Text(selectedCard?.detail ?? "Using \(cardBackDesign.subtitle) until the next draw.")
                     .font(.subheadline)
                     .foregroundStyle(AppTheme.parchment.opacity(0.72))
             }

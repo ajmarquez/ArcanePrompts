@@ -1,8 +1,6 @@
 import Foundation
 
 enum TarotDeck {
-    static let cardBackAssetName = "ArcaneCardBack"
-
     static let majorArcana: [TarotCard] = [
         .init(name: "The Fool", detail: "Major Arcana", assetName: "00-TheFool", isMajorArcana: true),
         .init(name: "The Magician", detail: "Major Arcana", assetName: "01-TheMagician", isMajorArcana: true),

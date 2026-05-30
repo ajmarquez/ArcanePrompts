@@ -18,6 +18,7 @@ struct TarotPromptView: View {
     let interactionStyle: InteractionStyle
 
     @AppStorage("deckMode") private var deckModeRawValue = DeckMode.majorArcana.rawValue
+    @AppStorage("cardBackDesign") private var cardBackDesignRawValue = CardBackDesign.defaultDesign.rawValue
     @State private var selectedCard: TarotCard?
     @State private var isShowingMenu = false
     @State private var showsSplash = true
@@ -27,8 +28,13 @@ struct TarotPromptView: View {
         nonmutating set { deckModeRawValue = newValue.rawValue }
     }
 
+    private var cardBackDesign: CardBackDesign {
+        get { CardBackDesign(rawValue: cardBackDesignRawValue) ?? .defaultDesign }
+        nonmutating set { cardBackDesignRawValue = newValue.rawValue }
+    }
+
     private var currentAssetName: String {
-        selectedCard?.assetName ?? TarotDeck.cardBackAssetName
+        selectedCard?.assetName ?? cardBackDesign.assetName
     }
 
     var body: some View {
@@ -77,6 +83,10 @@ struct TarotPromptView: View {
                 deckMode: Binding(
                     get: { deckMode },
                     set: { deckMode = $0 }
+                ),
+                cardBackDesign: Binding(
+                    get: { cardBackDesign },
+                    set: { cardBackDesign = $0 }
                 ),
                 selectedCard: selectedCard,
                 interactionLabel: interactionStyle.helperText,
@@ -151,6 +161,10 @@ struct TarotPromptView: View {
                         deckMode: Binding(
                             get: { deckMode },
                             set: { deckMode = $0 }
+                        ),
+                        cardBackDesign: Binding(
+                            get: { cardBackDesign },
+                            set: { cardBackDesign = $0 }
                         ),
                         selectedCard: selectedCard,
                         interactionLabel: interactionStyle.helperText,

@@ -1,9 +1,15 @@
 import SwiftUI
 
 struct SplashView: View {
+    @AppStorage("cardBackDesign") private var cardBackDesignRawValue = CardBackDesign.defaultDesign.rawValue
+
+    private var cardBackDesign: CardBackDesign {
+        CardBackDesign(rawValue: cardBackDesignRawValue) ?? .defaultDesign
+    }
+
     var body: some View {
         ZStack {
-            CardArtworkView(assetName: TarotDeck.cardBackAssetName, presentationMode: .immersive)
+            CardArtworkView(assetName: cardBackDesign.assetName, presentationMode: .immersive)
                 .ignoresSafeArea()
 
             LinearGradient(
