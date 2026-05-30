@@ -109,7 +109,11 @@ struct TarotPromptView: View {
     #if os(iOS)
     private var iosReadingView: some View {
         ZStack {
-            CardArtworkView(assetName: currentAssetName, presentationMode: .immersive)
+            CardArtworkView(
+                assetName: currentAssetName,
+                isReversed: selectedCard?.isReversed ?? false,
+                presentationMode: .immersive
+            )
                 .ignoresSafeArea()
                 .contentShape(Rectangle())
                 .onTapGesture {
@@ -151,7 +155,10 @@ struct TarotPromptView: View {
             VStack(spacing: 20) {
                 Spacer(minLength: 12)
 
-                CardArtworkView(assetName: currentAssetName)
+                CardArtworkView(
+                    assetName: currentAssetName,
+                    isReversed: selectedCard?.isReversed ?? false
+                )
                     .padding(.horizontal, 20)
                     .padding(.vertical, 8)
                     .contentShape(Rectangle())
@@ -160,7 +167,7 @@ struct TarotPromptView: View {
                     .simultaneousGesture(cardSwipeGesture)
 
                 VStack(spacing: 8) {
-                    Text(selectedCard?.name ?? "Arcane Prompts")
+                    Text(selectedCard?.displayName ?? "Arcane Prompts")
                         .font(.system(size: 24, weight: .semibold, design: .serif))
                         .foregroundStyle(AppTheme.parchment)
                         .multilineTextAlignment(.center)
@@ -271,7 +278,11 @@ struct TarotPromptView: View {
 
         guard let selectedCard else { return }
 
-        self.selectedCard = TarotDeck.card(withID: selectedCard.cardID, artwork: artwork)
+        self.selectedCard = TarotDeck.card(
+            withID: selectedCard.cardID,
+            artwork: artwork,
+            isReversed: selectedCard.isReversed
+        )
     }
 
     private func presentSheet(_ sheet: ActiveSheet) {

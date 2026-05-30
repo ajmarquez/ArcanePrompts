@@ -18,14 +18,14 @@ struct SettingsPanel: View {
                 HStack {
                     Text("Settings")
                         .font(.system(size: 22, weight: .semibold, design: .serif))
-                        .foregroundStyle(AppTheme.parchment)
+                        .foregroundStyle(AppTheme.sheetInk)
 
                     Spacer()
 
                     Button(action: onDismiss) {
                         Image(systemName: "xmark.circle.fill")
                             .font(.title3)
-                            .foregroundStyle(AppTheme.parchment.opacity(0.8))
+                            .foregroundStyle(AppTheme.sheetMuted)
                     }
                     .buttonStyle(.plain)
                 }
@@ -33,7 +33,7 @@ struct SettingsPanel: View {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Card Pool")
                         .font(.footnote.weight(.semibold))
-                        .foregroundStyle(AppTheme.gold)
+                        .foregroundStyle(AppTheme.sheetMuted)
 
                     Picker("Card Pool", selection: $deckMode) {
                         ForEach(DeckMode.allCases) { mode in
@@ -44,13 +44,13 @@ struct SettingsPanel: View {
 
                     Text(deckMode.description)
                         .font(.footnote)
-                        .foregroundStyle(AppTheme.parchment.opacity(0.72))
+                        .foregroundStyle(AppTheme.sheetMuted)
                 }
 
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Deck Artwork")
                         .font(.footnote.weight(.semibold))
-                        .foregroundStyle(AppTheme.gold)
+                        .foregroundStyle(AppTheme.sheetMuted)
 
                     Picker("Deck Artwork", selection: $deckArtwork) {
                         ForEach(TarotArtwork.allCases) { artwork in
@@ -61,13 +61,13 @@ struct SettingsPanel: View {
 
                     Text(deckArtwork.description)
                         .font(.footnote)
-                        .foregroundStyle(AppTheme.parchment.opacity(0.72))
+                        .foregroundStyle(AppTheme.sheetMuted)
                 }
 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Card Back")
                         .font(.footnote.weight(.semibold))
-                        .foregroundStyle(AppTheme.gold)
+                        .foregroundStyle(AppTheme.sheetMuted)
 
                     HStack(spacing: 14) {
                         Image(cardBackDesign.assetName)
@@ -83,7 +83,7 @@ struct SettingsPanel: View {
                         VStack(alignment: .leading, spacing: 6) {
                             Text(cardBackDesign.subtitle)
                                 .font(.headline)
-                                .foregroundStyle(AppTheme.parchment)
+                                .foregroundStyle(AppTheme.sheetInk)
 
                             Picker("Card Back", selection: $cardBackDesign) {
                                 ForEach(CardBackDesign.allCases) { design in
@@ -94,7 +94,7 @@ struct SettingsPanel: View {
 
                             Text(cardBackDesign.description)
                                 .font(.footnote)
-                                .foregroundStyle(AppTheme.parchment.opacity(0.72))
+                                .foregroundStyle(AppTheme.sheetMuted)
                         }
                     }
                 }
@@ -118,7 +118,7 @@ private struct SettingsPanelContainerModifier: ViewModifier {
                         .fill(.ultraThinMaterial.opacity(0.95))
                         .overlay(
                             RoundedRectangle(cornerRadius: 28, style: .continuous)
-                                .stroke(AppTheme.parchment.opacity(0.18), lineWidth: 1)
+                                .stroke(AppTheme.sheetMuted.opacity(0.18), lineWidth: 1)
                         )
                 )
         case .sheet:

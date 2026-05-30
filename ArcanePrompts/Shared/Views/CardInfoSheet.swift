@@ -26,18 +26,81 @@ struct CardInfoSheet: View {
         TarotMeaningCatalog.meaning(for: card.cardID)
     }
 
+    private var splitMeaning: (upright: String, reversed: String?)? {
+        guard let meaning else { return nil }
+
+        let parts = meaning.detail.components(separatedBy: "Reversed:")
+        let upright = parts.first?.trimmingCharacters(in: .whitespacesAndNewlines) ?? meaning.detail
+        let reversed = parts.count > 1 ? parts[1].trimmingCharacters(in: .whitespacesAndNewlines) : nil
+        return (upright, reversed)
+    }
+
+    private var summaryText: String {
+        guard let meaning else { return "Draw a card to load its meaning." }
+        guard let splitMeaning else { return meaning.summary }
+
+        if card.isReversed, let reversed = splitMeaning.reversed {
+            return "Reversed: \(condensedSummary(from: reversed))"
+        }
+
+        return "Upright: \(condensedSummary(from: splitMeaning.upright))"
+    }
+
+    private var detailText: String {
+        guard let meaning else { return "Draw a card to load its meaning." }
+        return meaning.detail
+    }
+
+    private func condensedSummary(from text: String) -> String {
+        let normalized = text
+            .replacingOccurrences(of: "  ", with: " ")
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+
+        let clauses = normalized
+            .split(separator: ";")
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+
+        if clauses.count >= 2 {
+            return clauses.prefix(2).joined(separator: "; ") + "."
+        }
+
+        let sentences = normalized
+            .split(separator: ".")
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+
+        if let firstSentence = sentences.first {
+            return firstSentence + "."
+        }
+
+        return normalized
+    }
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 18) {
                 HStack(alignment: .top, spacing: 12) {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(card.name)
+                        Text(card.displayName)
                             .font(.system(size: 26, weight: .semibold, design: .serif))
-                            .foregroundStyle(AppTheme.parchment)
+                            .foregroundStyle(AppTheme.sheetInk)
 
-                        Text(card.detail)
-                            .font(.subheadline)
-                            .foregroundStyle(AppTheme.parchment.opacity(0.72))
+                        HStack(spacing: 8) {
+                            Text(card.detail)
+                                .font(.subheadline)
+                                .foregroundStyle(AppTheme.sheetMuted)
+
+                            Text(card.orientationLabel)
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(AppTheme.midnight)
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 5)
+                                .background(
+                                    Capsule(style: .continuous)
+                                        .fill(AppTheme.gold.opacity(0.9))
+                                )
+                        }
                     }
 
                     Spacer()
@@ -45,7 +108,7 @@ struct CardInfoSheet: View {
                     Button(action: onDismiss) {
                         Image(systemName: "xmark.circle.fill")
                             .font(.title3)
-                            .foregroundStyle(AppTheme.parchment.opacity(0.8))
+                            .foregroundStyle(AppTheme.sheetMuted)
                     }
                     .buttonStyle(.plain)
                 }
@@ -61,35 +124,35 @@ struct CardInfoSheet: View {
                     Group {
                         switch section {
                         case .summary:
-                            Text(meaning.summary)
+                            Text(summaryText)
                         case .detail:
-                            Text(meaning.detail)
+                            Text(detailText)
                         }
                     }
                     .font(.body)
-                    .foregroundStyle(AppTheme.parchment)
+                    .foregroundStyle(AppTheme.sheetInk)
                     .textSelection(.enabled)
 
                     VStack(alignment: .leading, spacing: 6) {
                         Text("Source")
                             .font(.footnote.weight(.semibold))
-                            .foregroundStyle(AppTheme.gold)
+                            .foregroundStyle(AppTheme.sheetMuted)
 
                         Text(meaning.sourceTitle)
                             .font(.footnote)
-                            .foregroundStyle(AppTheme.parchment.opacity(0.78))
+                            .foregroundStyle(AppTheme.sheetMuted)
 
                         if let sourceURL = URL(string: meaning.sourceURL) {
                             Link("Open Sacred Texts source", destination: sourceURL)
                                 .font(.footnote.weight(.semibold))
-                                .foregroundStyle(AppTheme.gold)
+                                .foregroundStyle(AppTheme.sheetInk)
                         }
                     }
                     .padding(.top, 4)
                 } else {
                     Text("Draw a card to load its meaning.")
                         .font(.body)
-                        .foregroundStyle(AppTheme.parchment.opacity(0.72))
+                        .foregroundStyle(AppTheme.sheetMuted)
                 }
             }
             .padding(20)

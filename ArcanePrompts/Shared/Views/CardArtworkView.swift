@@ -7,6 +7,7 @@ struct CardArtworkView: View {
     }
 
     let assetName: String
+    var isReversed = false
     var presentationMode: PresentationMode = .contained
 
     var body: some View {
@@ -19,6 +20,7 @@ struct CardArtworkView: View {
                     Image(assetName)
                         .resizable()
                         .scaledToFit()
+                        .rotationEffect(.degrees(isReversed ? 180 : 0))
                         .frame(
                             width: proxy.size.width,
                             height: proxy.size.height
@@ -31,6 +33,7 @@ struct CardArtworkView: View {
             Image(assetName)
                 .resizable()
                 .scaledToFit()
+                .rotationEffect(.degrees(isReversed ? 180 : 0))
                 .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
                 .overlay(
                     RoundedRectangle(cornerRadius: 22, style: .continuous)

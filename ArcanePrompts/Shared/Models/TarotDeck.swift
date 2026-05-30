@@ -46,7 +46,12 @@ enum TarotDeck {
 
     static func randomCard(for mode: DeckMode, artwork: TarotArtwork) -> TarotCard {
         let deck = cards(for: mode, artwork: artwork)
-        return deck.randomElement() ?? majorArcana(for: artwork)[0]
+        let selectedCard = deck.randomElement() ?? majorArcana(for: artwork)[0]
+        return card(
+            withID: selectedCard.cardID,
+            artwork: artwork,
+            isReversed: Bool.random()
+        ) ?? selectedCard
     }
 
     static func cards(for mode: DeckMode, artwork: TarotArtwork) -> [TarotCard] {
@@ -58,8 +63,19 @@ enum TarotDeck {
         }
     }
 
-    static func card(withID cardID: String, artwork: TarotArtwork) -> TarotCard? {
-        fullDeck(for: artwork).first(where: { $0.cardID == cardID })
+    static func card(withID cardID: String, artwork: TarotArtwork, isReversed: Bool = false) -> TarotCard? {
+        fullDeck(for: artwork)
+            .first(where: { $0.cardID == cardID })
+            .map { baseCard in
+                TarotCard(
+                    cardID: baseCard.cardID,
+                    name: baseCard.name,
+                    detail: baseCard.detail,
+                    assetName: baseCard.assetName,
+                    isMajorArcana: baseCard.isMajorArcana,
+                    isReversed: isReversed
+                )
+            }
     }
 
     static func majorArcana(for artwork: TarotArtwork) -> [TarotCard] {
@@ -69,7 +85,8 @@ enum TarotDeck {
                 name: definition.name,
                 detail: majorDetail(for: artwork),
                 assetName: assetName(for: definition.cardID, artwork: artwork),
-                isMajorArcana: true
+                isMajorArcana: true,
+                isReversed: false
             )
         }
     }
@@ -87,7 +104,8 @@ enum TarotDeck {
                     name: "\(rank) of \(suit.1)",
                     detail: minorDetail(for: artwork),
                     assetName: assetName(for: cardID, artwork: artwork),
-                    isMajorArcana: false
+                    isMajorArcana: false,
+                    isReversed: false
                 )
             }
         }

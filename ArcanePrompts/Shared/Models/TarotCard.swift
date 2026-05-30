@@ -121,6 +121,15 @@ struct TarotCard: Identifiable, Hashable {
     let detail: String
     let assetName: String
     let isMajorArcana: Bool
+    let isReversed: Bool
 
-    var id: String { cardID }
+    var id: String { "\(cardID)-\(isReversed ? "reversed" : "upright")" }
+
+    var displayName: String {
+        isReversed ? "\(name) Reversed" : name
+    }
+
+    var orientationLabel: String {
+        isReversed ? "Reversed" : "Upright"
+    }
 }

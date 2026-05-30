@@ -7,5 +7,6 @@ enum AppTheme {
     static let parchment = Color(red: 0.95, green: 0.90, blue: 0.79)
     static let gold = Color(red: 0.85, green: 0.71, blue: 0.43)
     static let mist = Color.white.opacity(0.12)
+    static let sheetInk = Color.black.opacity(0.84)
+    static let sheetMuted = Color.black.opacity(0.64)
 }
-
